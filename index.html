@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Amazing Coffee | Forecasting & Inventory Planning</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <div class="brand-wrap">
+          <div class="brand-mark">AC</div>
+          <div>
+            <div class="kicker">SCM6111</div>
+            <div class="brand-name">Amazing Coffee</div>
+          </div>
+        </div>
+        <nav class="topnav">
+          <a href="#overview">Overview</a>
+          <a href="#forecast">Forecast</a>
+          <a href="#functions">Functions</a>
+          <a href="#sensitivity">Sensitivity</a>
+        </nav>
+        <button class="primary-btn" id="runForecastBtn">Run Forecast</button>
+      </header>
+
+      <main>
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="eyebrow">Data-Driven Forecasting & Inventory Optimization</p>
+            <h1>Weekly demand forecast and ingredient ordering plan</h1>
+            <p class="lead">
+              The system combines the last 15-day sales history with ingredient cost and
+              inventory holding cost to generate an ordering schedule for coffee bean,
+              milk foam, steamed milk, and chocolate powder for the next week.
+            </p>
+            <div class="hero-badges">
+              <span>15-day demand history</span>
+              <span>Weekly ordering logic</span>
+              <span>Manager scenario testing</span>
+            </div>
+          </div>
+
+          <div class="hero-metrics">
+            <div class="metric-card accent">
+              <span class="metric-label">Forecasted weekly sales</span>
+              <strong id="weeklySalesTotal">1,851 cups</strong>
+              <small>3 beverage categories</small>
+            </div>
+            <div class="metric-card">
+              <span class="metric-label">Expected material use</span>
+              <strong id="materialUseTotal">108.5 Kg</strong>
+              <small>Across all ingredients</small>
+            </div>
+            <div class="metric-card">
+              <span class="metric-label">Discount timing</span>
+              <strong>Thursday</strong>
+              <small>15% ingredient discount</small>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" id="functions">
+          <div class="section-head compact-head">
+            <div>
+              <p class="eyebrow muted">Key functions</p>
+              <h2>Core decision support</h2>
+            </div>
+          </div>
+
+          <div class="functions-grid">
+            <article class="function-card">
+              <div class="icon">01</div>
+              <h3>Forecast engine</h3>
+              <p>Builds a demand forecast from the 15-day history using day-of-week seasonality and promotion adjustment.</p>
+            </article>
+            <article class="function-card">
+              <div class="icon">02</div>
+              <h3>Material requirement planner</h3>
+              <p>Converts beverage demand into ingredient units, considering each drink’s recipe and required purchase quantity.</p>
+            </article>
+            <article class="function-card">
+              <div class="icon">03</div>
+              <h3>Ordering strategy</h3>
+              <p>Evaluates when to order, whether to use Thursday discount, and how inventory holding cost affects the plan.</p>
+            </article>
+            <article class="function-card">
+              <div class="icon">04</div>
+              <h3>Sensitivity analysis</h3>
+              <p>Changes key cost assumptions to test the robust region of the ordering plan and highlight risk exposure.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="forecast">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow muted">Overview of data-driven forecasting</p>
+              <h2>Historical demand pattern and next-week forecast</h2>
+            </div>
+            <span class="status-pill">Seasonality + promotion effect</span>
+          </div>
+
+          <div class="overview-grid">
+            <div class="text-block">
+              <p>
+                The forecasting logic uses weekday seasonality from the historical data set.
+                A promotion on Thursday significantly increases demand, so the model adjusts
+                expected sales before estimating ingredient ordering requirements.
+              </p>
+              <ul>
+                <li>Demand pattern is highly repetitive by weekday.</li>
+                <li>Friday and Saturday are peak turnover days.</li>
+                <li>Thursday promotion creates a clear demand uplift.</li>
+                <li>Holdings are planned only when ordering cost savings outweigh storage cost.</li>
+              </ul>
+            </div>
+            <div class="mini-panel">
+              <h3>Forecast focus</h3>
+              <div class="mini-row">
+                <span>Avg. cappuccino / day</span>
+                <strong id="avgCappuccino">83.5</strong>
+              </div>
+              <div class="mini-row">
+                <span>Avg. latte / day</span>
+                <strong id="avgLatte">85.4</strong>
+              </div>
+              <div class="mini-row">
+                <span>Avg. mocha / day</span>
+                <strong id="avgMocha">96.4</strong>
+              </div>
+              <div class="mini-row strong-row">
+                <span>Peak demand day</span>
+                <strong>Friday</strong>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="main-grid">
+          <div class="panel controls-panel">
+            <div class="section-head tight">
+              <div>
+                <p class="eyebrow muted">User interface</p>
+                <h2>Manager planning controls</h2>
+              </div>
+            </div>
+
+            <div class="input-grid" id="managerInputs">
+              <div class="field-group">
+                <label>Monday</label>
+                <div class="field-row"><input type="number" value="51" data-day="Monday" data-product="Cappuccino" /><span>Cappuccino</span></div>
+                <div class="field-row"><input type="number" value="80" data-day="Monday" data-product="Latte" /><span>Latte</span></div>
+                <div class="field-row"><input type="number" value="55" data-day="Monday" data-product="Mocha" /><span>Mocha</span></div>
+              </div>
+
+              <div class="field-group">
+                <label>Tuesday</label>
+                <div class="field-row"><input type="number" value="48" data-day="Tuesday" data-product="Cappuccino" /><span>Cappuccino</span></div>
+                <div class="field-row"><input type="number" value="43" data-day="Tuesday" data-product="Latte" /><span>Latte</span></div>
+                <div class="field-row"><input type="number" value="46" data-day="Tuesday" data-product="Mocha" /><span>Mocha</span></div>
+              </div>
+
+              <div class="field-group">
+                <label>Wednesday</label>
+                <div class="field-row"><input type="number" value="56" data-day="Wednesday" data-product="Cappuccino" /><span>Cappuccino</span></div>
+                <div class="field-row"><input type="number" value="57" data-day="Wednesday" data-product="Latte" /><span>Latte</span></div>
+                <div class="field-row"><input type="number" value="59" data-day="Wednesday" data-product="Mocha" /><span>Mocha</span></div>
+              </div>
+
+              <div class="field-group">
+                <label>Thursday</label>
+                <div class="field-row"><input type="number" value="113" data-day="Thursday" data-product="Cappuccino" /><span>Cappuccino</span></div>
+                <div class="field-row"><input type="number" value="94" data-day="Thursday" data-product="Latte" /><span>Latte</span></div>
+                <div class="field-row"><input type="number" value="131" data-day="Thursday" data-product="Mocha" /><span>Mocha</span></div>
+              </div>
+
+              <div class="field-group">
+                <label>Friday</label>
+                <div class="field-row"><input type="number" value="137" data-day="Friday" data-product="Cappuccino" /><span>Cappuccino</span></div>
+                <div class="field-row"><input type="number" value="121" data-day="Friday" data-product="Latte" /><span>Latte</span></div>
+                <div class="field-row"><input type="number" value="165" data-day="Friday" data-product="Mocha" /><span>Mocha</span></div>
+              </div>
+
+              <div class="field-group">
+                <label>Saturday</label>
+                <div class="field-row"><input type="number" value="112" data-day="Saturday" data-product="Cappuccino" /><span>Cappuccino</span></div>
+                <div class="field-row"><input type="number" value="140" data-day="Saturday" data-product="Latte" /><span>Latte</span></div>
+                <div class="field-row"><input type="number" value="132" data-day="Saturday" data-product="Mocha" /><span>Mocha</span></div>
+              </div>
+
+              <div class="field-group">
+                <label>Sunday</label>
+                <div class="field-row"><input type="number" value="69" data-day="Sunday" data-product="Cappuccino" /><span>Cappuccino</span></div>
+                <div class="field-row"><input type="number" value="64" data-day="Sunday" data-product="Latte" /><span>Latte</span></div>
+                <div class="field-row"><input type="number" value="83" data-day="Sunday" data-product="Mocha" /><span>Mocha</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel chart-panel">
+            <div class="section-head tight">
+              <div>
+                <p class="eyebrow muted">Forecast result</p>
+                <h2>Next-week demand by product</h2>
+              </div>
+            </div>
+            <svg id="demandChart" viewBox="0 0 640 280" role="img" aria-label="Product demand forecast chart"></svg>
+          </div>
+        </section>
+
+        <section class="results-grid">
+          <div class="panel result-panel">
+            <div class="section-head tight">
+              <div>
+                <p class="eyebrow muted">Result</p>
+                <h2>Projected order plan</h2>
+              </div>
+            </div>
+
+            <p id="demandImpactNote" class="impact-note">Projected order plan is based on the current demand forecast.</p>
+            <div class="total-cost-box">
+              <div class="total-cost-line">
+                <span>Ingredient order cost</span>
+                <strong id="ingredientOrderCost">$0.00</strong>
+              </div>
+              <div class="total-cost-line">
+                <span>Holding cost</span>
+                <strong id="holdingCostTotal">$0.00</strong>
+              </div>
+              <div class="total-cost-line total-cost-line--total">
+                <span>Weekly total cost</span>
+                <strong id="weeklyTotalCost">$0.00</strong>
+              </div>
+            </div>
+            <table>
+              <thead>
+                <tr>
+                  <th>Ingredient</th>
+                  <th>Required (kg)</th>
+                  <th>Best order day</th>
+                  <th>Unit cost</th>
+                </tr>
+              </thead>
+              <tbody id="orderTableBody"></tbody>
+            </table>
+
+            <div class="subtable-block">
+              <h3>Order schedule</h3>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Ingredient</th>
+                    <th>Monday</th>
+                    <th>Thursday</th>
+                    <th>Saturday</th>
+                    <th>Total</th>
+                  </tr>
+                </thead>
+                <tbody id="orderScheduleTableBody"></tbody>
+              </table>
+            </div>
+
+            <div class="subtable-block">
+              <div class="selector-row">
+                <h3>Inventory balance</h3>
+                <div class="day-selector-box">
+                  <label for="inventoryDaySelector">Select day</label>
+                  <select id="inventoryDaySelector">
+                    <option value="Monday">Monday</option>
+                    <option value="Tuesday">Tuesday</option>
+                    <option value="Wednesday">Wednesday</option>
+                    <option value="Thursday">Thursday</option>
+                    <option value="Friday">Friday</option>
+                    <option value="Saturday">Saturday</option>
+                    <option value="Sunday">Sunday</option>
+                  </select>
+                </div>
+              </div>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Ingredient</th>
+                    <th>Opening inv.</th>
+                    <th>Consumed qty</th>
+                    <th>Ending inv.</th>
+                    <th>Holding cost</th>
+                  </tr>
+                </thead>
+                <tbody id="inventoryBalanceTableBody"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="panel sensitivity-panel" id="sensitivity">
+            <div class="section-head tight">
+              <div>
+                <p class="eyebrow muted">Sensitivity</p>
+                <h2>Scenario testing</h2>
+              </div>
+            </div>
+
+            <div class="slider-group">
+              <label for="discountRange">Supplier discount</label>
+              <input id="discountRange" type="range" min="0" max="30" value="15" />
+              <span id="discountValue">15%</span>
+            </div>
+            <div class="slider-group">
+              <label for="holdingRange">Holding cost multiplier</label>
+              <input id="holdingRange" type="range" min="0.5" max="2" step="0.1" value="1" />
+              <span id="holdingValue">1.0×</span>
+            </div>
+            <div class="slider-group">
+              <label for="demandRange">Demand change</label>
+              <input id="demandRange" type="range" min="-20" max="30" value="5" />
+              <span id="demandValue">+5%</span>
+            </div>
+
+            <div class="sensitivity-summary">
+              <div>
+                <span>Order cost</span>
+                <strong id="orderCostValue">$1,120</strong>
+              </div>
+              <div>
+                <span>Inventory holding</span>
+                <strong id="holdCostValue">$243</strong>
+              </div>
+              <div>
+                <span>Recommended action</span>
+                <strong id="recommendValue">Advance Thursday order</strong>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
