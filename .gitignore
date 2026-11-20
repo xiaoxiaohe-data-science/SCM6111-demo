@@ -12,6 +12,7 @@ venv/
 # Editor and OS files
 .vscode/
 .DS_Store
+*.docx
 
 # Test and coverage output
 .pytest_cache/
