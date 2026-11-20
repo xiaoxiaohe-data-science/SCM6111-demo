@@ -134,6 +134,7 @@ See [GITHUB_DEPLOYMENT.md](GITHUB_DEPLOYMENT.md) for the complete deployment che
 - [.streamlit/config.toml](.streamlit/config.toml): deployment theme and server configuration
 - [.gitignore](.gitignore): excludes virtual environments and local editor files
 - [GITHUB_DEPLOYMENT.md](GITHUB_DEPLOYMENT.md): GitHub and Streamlit Community Cloud upload guide
+- [PROJECT_DEVELOPMENT_GUIDE.md](PROJECT_DEVELOPMENT_GUIDE.md): project development, Agent collaboration, LP model, page structure, and deployment documentation
 
 ## 7. Expected usage
 
